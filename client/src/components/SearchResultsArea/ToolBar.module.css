@@ -1,0 +1,25 @@
+.leftContainer{
+    display: flex;
+}
+
+.rightContainer{
+    display: flex;
+    align-items: center;
+}
+
+.totalNum{
+    display: flex;
+    align-items: center;
+}
+
+.pager{
+    display: flex;
+    align-items: center;
+}
+
+.button{
+    max-width: 3rem;
+    min-width: 3rem;
+    margin: 0 0.2rem;
+    padding: 0;
+}
