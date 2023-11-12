@@ -7,8 +7,9 @@ export const SearchRange = {
   "2000": 4,
   "3000": 5,
 };
-export const SearchRanges = objectKeys(SearchRange);
+export type SearchRangeKeys = keyof typeof SearchRange;
+export const SearchRanges = objectKeys(SearchRange)
 
-export default interface SearchOptions {
-  range?: typeof SearchRanges;
+export default interface ISearchOptions {
+  range?: SearchRangeKeys;
 }

@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
-import SearchOptions from "@/entities/SearchOptions";
+import ISearchOptions from "@/entities/SearchOptions";
 
-interface SearchState {
-  searchOptions: SearchOptions;
+interface ISearchState {
+  searchOptions: ISearchOptions;
 }
 
-const initialState: SearchState = {
+export const initialState: ISearchState = {
   searchOptions: {},
 };
 
@@ -14,7 +14,7 @@ export const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    updateSearchOptions: (state, action: PayloadAction<SearchOptions>) => {
+    updateSearchOptions: (state, action: PayloadAction<ISearchOptions>) => {
       state.searchOptions = action.payload;
     },
   },
