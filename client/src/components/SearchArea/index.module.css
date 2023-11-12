@@ -18,11 +18,3 @@
     margin-top: 0.4rem;
 }
 
-.selectContainer{
-    display: flex;
-    width: 60%;
-}
-
-.select{
-    flex-grow: 1;
-}
