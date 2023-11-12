@@ -7,6 +7,7 @@ import SectionHeader from "@/components/SectionHeader";
 import styles from "./index.module.css";
 import { grey } from "@mui/material/colors";
 import RangeSelect from "./RangeSelect";
+import SearchButton from "./SearchButton";
 
 const SearchArea: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ const SearchArea: React.FC = () => {
         <SectionHeader text="検索" />
         <Box className={styles.form}>
           <RangeSelect />
-          <Button variant="contained" sx={{color: 'white'}}>検索</Button>
+          <SearchButton />
         </Box>
       </Box>
     </Box>

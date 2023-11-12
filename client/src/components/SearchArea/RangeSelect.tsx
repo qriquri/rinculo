@@ -6,7 +6,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import styles from "./RangeSelect.module.css";
-import { SearchRanges } from "@/entities/SearchOptions";
+import { SearchRange, SearchRanges } from "@/entities/SearchOptions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { updateSearchOptions } from "@/redux/slices/SearchSlice";
 
@@ -15,14 +15,16 @@ const RangeSelect: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const selectedRangeLabel = SearchRanges.findIndex(
-    (range) => range == searchOptions.range
+    (range) => SearchRange[range] === searchOptions.range
   );
 
   const handleSelectRange = (e: SelectChangeEvent<number>) => {
+    const index = Number(e.target.value);
+
     dispatch(
       updateSearchOptions({
         ...searchOptions,
-        range: SearchRanges[Number(e.target.value)],
+        range: index === -1 ? undefined : SearchRange[SearchRanges[index]],
       })
     );
   };
