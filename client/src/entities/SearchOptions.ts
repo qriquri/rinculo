@@ -14,6 +14,7 @@ export type DataFormat = "json";
 
 export const FETCH_NUM_UNIT = 20;
 export default interface ISearchOptions {
+  id?: string;
   range?: SearchRangeLabel;
   lat?: number;
   lng?: number;
@@ -23,6 +24,7 @@ export default interface ISearchOptions {
 }
 
 export const defaultOptions = (): ISearchOptions => ({
+  id: undefined,
   range: undefined,
   lat: undefined,
   lng: undefined,

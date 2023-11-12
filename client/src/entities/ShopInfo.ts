@@ -6,7 +6,7 @@ export default interface IShopInfo {
   address: string;
   station_name: string;
   ktai_coupon: number;
-  large_service_area: string;
+  large_service_area: { code: string; name: string };
   service_area: { code: string; name: string };
   large_area: { code: string; name: string };
   middle_area: { code: string; name: string };
@@ -38,10 +38,10 @@ export default interface IShopInfo {
   open: string;
   close: string;
   party_capacity: number;
-  other_memo: "";
-  shop_detail_memo: "";
-  budget_memo: "";
-  wedding: "";
+  other_memo: string;
+  shop_detail_memo: string;
+  budget_memo: string;
+  wedding: string;
   course: string;
   free_drink: string;
   free_food: string;

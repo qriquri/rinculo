@@ -7,15 +7,20 @@ import ShopListItem from "./ShopListItem";
 import { useAppSelector, useAppDispatch } from "@/redux/hooks";
 import { useSearchParams } from "next/navigation";
 import { objectKeys } from "@/utils/customObject";
-import { setOption } from "@/entities/SearchOptions";
+import { defaultOptions, setOption } from "@/entities/SearchOptions";
 import { fetchShopInfo } from "@/redux/slices/SearchSlice";
+import useFetchShopDetail from "../Hooks/UseFetchShopDetail";
 
 const SearchResultsArea: React.FC = () => {
   const searchState = useAppSelector((state) => state.search);
 
   const params = useSearchParams();
-
+  const fetchDetail = useFetchShopDetail();
   const dispatch = useAppDispatch();
+
+  const handleClickShopItem = (id: string) => {
+    fetchDetail(id);
+  };
 
   const ShopListItems = React.useMemo(() => {
     const shopList = searchState.result?.shops ?? [];
@@ -24,18 +29,21 @@ const SearchResultsArea: React.FC = () => {
       return (
         <ShopListItem
           key={index}
+          id={item.id}
           imgUrl={item.photo.mobile.l}
           shopName={item.name}
           access={item.access}
+          onClick={handleClickShopItem}
         />
       );
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchState.result?.shops]);
 
   React.useEffect(() => {
     console.log(params.toString());
     const keys = objectKeys(searchState.searchOptions);
-    const options = { ...searchState.searchOptions };
+    const options = { ...defaultOptions() };
     keys.forEach((key) => {
       if (!params.has(key)) {
         return;
@@ -49,7 +57,7 @@ const SearchResultsArea: React.FC = () => {
     });
     console.log(searchState.searchOptions, options);
     dispatch(fetchShopInfo(options));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   return (
