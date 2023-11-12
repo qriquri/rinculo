@@ -20,7 +20,7 @@ interface IFetchedShopInfo {
 }
 
 export const initialState: ISearchState = {
-  searchOptions: defaultOptions,
+  searchOptions: defaultOptions(),
   isFetching: false,
 };
 

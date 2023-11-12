@@ -1,15 +1,17 @@
 import { Toolbar, Box, Typography, Button } from "@mui/material";
 import styles from "./ToolBar.module.css";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { fetchShopInfo } from "@/redux/slices/SearchSlice";
-import { FETCH_NUM_UNIT } from "@/entities/SearchOptions";
+import { useAppSelector, useAppDispatch } from "@/redux/hooks";
+import { FETCH_NUM_UNIT, toQueryParam } from "@/entities/SearchOptions";
+import { useRouter } from "next/navigation";
+import { updateSearchOptions } from "@/redux/slices/SearchSlice";
 
 const CustomToolBar: React.FC = () => {
+  const router = useRouter();
   const searchState = useAppSelector((state) => state.search);
   const dispatch = useAppDispatch();
   const totalNum = searchState.result?.totalNum ?? 0;
   const startNum = searchState.result?.start ?? 0;
-  const endNum = searchState.result?.shops.length
+  const endNum = searchState.result?.shops
     ? startNum + searchState.result?.shops.length - 1
     : 0;
   const isFirstPage = startNum <= FETCH_NUM_UNIT;
@@ -20,10 +22,17 @@ const CustomToolBar: React.FC = () => {
       return;
     }
     dispatch(
-      fetchShopInfo({
+      updateSearchOptions({
         ...searchState.searchOptions,
         start: startNum - FETCH_NUM_UNIT,
       })
+    );
+    router.push(
+      "/?" +
+        toQueryParam({
+          ...searchState.searchOptions,
+          start: startNum - FETCH_NUM_UNIT,
+        })
     );
   };
 
@@ -32,10 +41,17 @@ const CustomToolBar: React.FC = () => {
       return;
     }
     dispatch(
-      fetchShopInfo({
+      updateSearchOptions({
         ...searchState.searchOptions,
         start: startNum + FETCH_NUM_UNIT,
       })
+    );
+    router.push(
+      "/?" +
+        toQueryParam({
+          ...searchState.searchOptions,
+          start: startNum + FETCH_NUM_UNIT,
+        })
     );
   };
 

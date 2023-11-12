@@ -23,14 +23,14 @@ export default interface ISearchOptions {
   format: DataFormat;
 }
 
-export const defaultOptions: ISearchOptions = {
+export const defaultOptions = (): ISearchOptions => ({
   range: undefined,
   lat: undefined,
   lng: undefined,
   count: FETCH_NUM_UNIT,
   start: undefined,
   format: "json",
-};
+});
 
 export const toQueryParam = (options: ISearchOptions) => {
   const keys = objectKeys(options);
@@ -40,5 +40,5 @@ export const toQueryParam = (options: ISearchOptions) => {
     }
   });
 
-  return params.filter(param => param).join("&");
+  return params.filter((param) => param).join("&");
 };
