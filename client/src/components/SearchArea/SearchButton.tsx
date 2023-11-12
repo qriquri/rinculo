@@ -1,33 +1,19 @@
 import { geoFindMe } from "@/entities/GeoLocation";
-import { toQueryParam } from "@/entities/SearchOptions";
-import { useAppSelector, useAppDispatch } from "@/redux/hooks";
-import { fetchShopInfo, updateSearchOptions } from "@/redux/slices/SearchSlice";
+import { useAppSelector } from "@/redux/hooks";
 import { Button } from "@mui/material";
-import { useRouter } from "next/navigation";
+import useFetchShopInfo from "../Hooks/UseFetchShopInfo";
 
 const SearchButton: React.FC = () => {
   const { isFetching, searchOptions } = useAppSelector((state) => state.search);
-  const dispatch = useAppDispatch();
-  const router = useRouter();
+  const fetchInfo = useFetchShopInfo();
   const handleClick = () => {
     const success = (position: GeolocationPosition) => {
-      dispatch(
-        updateSearchOptions({
-          ...searchOptions,
-          start: 1,
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        })
-      );
-      router.push(
-        "/?" +
-          toQueryParam({
-            ...searchOptions,
-            start: 1,
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          })
-      );
+      fetchInfo({
+        ...searchOptions,
+        start: 1,
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
     };
     const error = (error: GeolocationPositionError) => {
       console.error("位置情報取得失敗");

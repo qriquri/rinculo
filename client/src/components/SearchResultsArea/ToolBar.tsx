@@ -1,14 +1,12 @@
 import { Toolbar, Box, Typography, Button } from "@mui/material";
 import styles from "./ToolBar.module.css";
-import { useAppSelector, useAppDispatch } from "@/redux/hooks";
-import { FETCH_NUM_UNIT, toQueryParam } from "@/entities/SearchOptions";
-import { useRouter } from "next/navigation";
-import { updateSearchOptions } from "@/redux/slices/SearchSlice";
+import { useAppSelector } from "@/redux/hooks";
+import { FETCH_NUM_UNIT } from "@/entities/SearchOptions";
+import useFetchShopInfo from "../Hooks/UseFetchShopInfo";
 
 const CustomToolBar: React.FC = () => {
-  const router = useRouter();
+  const fetchShopInfo = useFetchShopInfo();
   const searchState = useAppSelector((state) => state.search);
-  const dispatch = useAppDispatch();
   const totalNum = searchState.result?.totalNum ?? 0;
   const startNum = searchState.result?.start ?? 0;
   const endNum = searchState.result?.shops
@@ -21,38 +19,20 @@ const CustomToolBar: React.FC = () => {
     if (isFirstPage) {
       return;
     }
-    dispatch(
-      updateSearchOptions({
-        ...searchState.searchOptions,
-        start: startNum - FETCH_NUM_UNIT,
-      })
-    );
-    router.push(
-      "/?" +
-        toQueryParam({
-          ...searchState.searchOptions,
-          start: startNum - FETCH_NUM_UNIT,
-        })
-    );
+    fetchShopInfo({
+      ...searchState.searchOptions,
+      start: startNum - FETCH_NUM_UNIT,
+    });
   };
 
   const handleClickNext = () => {
     if (isFinalPage) {
       return;
     }
-    dispatch(
-      updateSearchOptions({
-        ...searchState.searchOptions,
-        start: startNum + FETCH_NUM_UNIT,
-      })
-    );
-    router.push(
-      "/?" +
-        toQueryParam({
-          ...searchState.searchOptions,
-          start: startNum + FETCH_NUM_UNIT,
-        })
-    );
+    fetchShopInfo({
+      ...searchState.searchOptions,
+      start: startNum + FETCH_NUM_UNIT,
+    });
   };
 
   return (

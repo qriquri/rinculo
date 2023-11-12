@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
 import ISearchOptions, { defaultOptions, toQueryParam } from "@/entities/SearchOptions";
+import IShopInfo from "@/entities/ShopInfo";
 
 interface ISearchResult {
   totalNum: number
   start: number
-  shops: any[]
+  shops: IShopInfo[]
 }
 
 interface ISearchState {

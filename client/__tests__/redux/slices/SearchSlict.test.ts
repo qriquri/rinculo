@@ -14,8 +14,8 @@ describe("Slice構築のテスト", () => {
 describe("updateSearchOptions", () => {
     it("値をセットできる", () => {
         const store = setupStore()
-        store.dispatch(updateSearchOptions({...store.getState().search.searchOptions, range: 1}))
-        const expectOptions: ISearchOptions = {...store.getState().search.searchOptions, range: 1}
+        store.dispatch(updateSearchOptions({...store.getState().search.searchOptions, range: "1"}))
+        const expectOptions: ISearchOptions = {...store.getState().search.searchOptions, range: "1"}
 
         expect(store.getState().search.searchOptions).toEqual(expectOptions)
     })
