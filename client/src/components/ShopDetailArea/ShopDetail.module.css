@@ -1,0 +1,36 @@
+.wrapper {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.topWrapper{
+    display: flex;
+}
+
+.leftContainer {
+    padding: 1rem;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.infoWrapper{
+    padding: 1rem;
+}
+
+.subsection {
+    display: flex;
+    flex-direction: column;
+}
+
+.subsectionText {
+    margin-left: 1rem;
+}

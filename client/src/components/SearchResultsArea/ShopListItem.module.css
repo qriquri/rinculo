@@ -1,0 +1,28 @@
+.wrapper {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 1rem;
+}
+
+.leftContainer {
+    padding: 1rem;
+}
+
+.rightContainer {
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+    overflow: hidden;
+}
+
+.access {
+    display: flex;
+    flex-direction: column;
+}
+
+.accessText {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
