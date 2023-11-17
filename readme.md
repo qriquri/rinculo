@@ -1,6 +1,13 @@
 # RINCuLo: Restaurant information near current location
 
-## Docs
-[簡易仕様書](./doc/簡易仕様書.md)
+## Snap Shots
+検索画面
+![Alt text](<./docs/imgs/home.png>)
 
-[TODO](./doc/TODO.md)
+店舗詳細画面
+![Alt text](<./docs/imgs/detail.png>)
+
+## Docs
+[簡易仕様書](./docs/簡易仕様書.md)
+
+[TODO](./docs/TODO.md)
