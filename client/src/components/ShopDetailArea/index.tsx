@@ -1,6 +1,6 @@
 import { Box } from "@mui/system";
 import { useParams } from "next/navigation";
-import SectionHeader from "../SectionHeader";
+import SectionHeader from "../uiParts/SectionHeader";
 import ShopDetail from "./ShopDetail";
 import styles from "./index.module.css";
 import React from "react";

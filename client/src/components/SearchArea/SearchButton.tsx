@@ -1,14 +1,14 @@
 import { geoFindMe } from "@/entities/GeoLocation";
 import { useAppSelector } from "@/redux/hooks";
 import { Button } from "@mui/material";
-import useFetchShopInfo from "../Hooks/UseFetchShopInfo";
+import useGoShopSearchResult from "../Hooks/UseGoShopSearchResult";
 
 const SearchButton: React.FC = () => {
   const { isFetching, searchOptions } = useAppSelector((state) => state.search);
-  const fetchInfo = useFetchShopInfo();
+  const goResult = useGoShopSearchResult();
   const handleClick = () => {
     const success = (position: GeolocationPosition) => {
-      fetchInfo({
+      goResult({
         ...searchOptions,
         start: 1,
         lat: position.coords.latitude,

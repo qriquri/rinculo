@@ -68,3 +68,14 @@ export default interface IShopInfo {
     sp: string;
   };
 }
+
+/**
+ * キャッチコピーを取得する
+ * 
+ * キャッチコピーが`catch`か`genre.catch`どちらかにしかない場合がある 
+ * @param info 
+ * @returns 
+ */
+export const getCatchCopy = (info: IShopInfo) => {
+  return info.catch ? info.catch : info.genre.catch
+}

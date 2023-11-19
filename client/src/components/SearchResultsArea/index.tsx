@@ -1,6 +1,6 @@
 import { Box, List } from "@mui/material";
 import * as React from "react";
-import SectionHeader from "@/components/SectionHeader";
+import SectionHeader from "@/components/uiParts/SectionHeader";
 import styles from "./index.module.css";
 import CustomToolBar from "./ToolBar";
 import ShopListItem from "./ShopListItem";
@@ -9,17 +9,17 @@ import { useSearchParams } from "next/navigation";
 import { objectKeys } from "@/utils/customObject";
 import { defaultOptions, setOption } from "@/entities/SearchOptions";
 import { fetchShopInfo } from "@/redux/slices/SearchSlice";
-import useFetchShopDetail from "../Hooks/UseFetchShopDetail";
+import useGoShopDetail from "../Hooks/UseGoShopDetail";
 
 const SearchResultsArea: React.FC = () => {
   const searchState = useAppSelector((state) => state.search);
 
   const params = useSearchParams();
-  const fetchDetail = useFetchShopDetail();
+  const goDetail = useGoShopDetail();
   const dispatch = useAppDispatch();
 
   const handleClickShopItem = (id: string) => {
-    fetchDetail(id);
+    goDetail(id);
   };
 
   const ShopListItems = React.useMemo(() => {

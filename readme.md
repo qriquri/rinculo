@@ -1,5 +1,8 @@
 # RINCuLo: Restaurant information near current location
 
+## App URL
+[rinculo.vercel.app](https://rinculo.vercel.app/)
+
 ## Snap Shots
 検索画面
 ![Alt text](<./docs/imgs/home.png>)

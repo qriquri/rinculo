@@ -1,18 +1,10 @@
 import { objectKeys } from "@/utils/customObject";
-
-export const SearchRange = {
-  "300": "1",
-  "500": "2",
-  "1000": "3",
-  "2000": "4",
-  "3000": "5",
-} as const;
-export type SearchRangeLabel = (typeof SearchRange)[keyof typeof SearchRange];
-export const SearchRanges = objectKeys(SearchRange);
+import { SearchRangeLabel, toMatchRangeLabel } from "./SearchRange";
 
 export type DataFormat = "json";
 
 export const FETCH_NUM_UNIT = 20;
+
 export default interface ISearchOptions {
   id?: string;
   range?: SearchRangeLabel;
@@ -20,6 +12,7 @@ export default interface ISearchOptions {
   lng?: number;
   count?: number;
   start?: number;
+  genre?: string;
   format: DataFormat;
 }
 
@@ -30,6 +23,7 @@ export const defaultOptions = (): ISearchOptions => ({
   lng: undefined,
   count: FETCH_NUM_UNIT,
   start: undefined,
+  genre: undefined,
   format: "json",
 });
 
@@ -44,18 +38,11 @@ export const toQueryParam = (options: ISearchOptions) => {
   return params.filter((param) => param).join("&");
 };
 
-const toMatchRangeLabel = (value: string): SearchRangeLabel | undefined => {
-  switch (value) {
-    case "1":
-    case "2":
-    case "3":
-    case "4":
-    case "5":
-      return value as SearchRangeLabel
-  }
-}
-
-export const setOption = (options: ISearchOptions, key: keyof ISearchOptions, value: string) => {
+export const setOption = (
+  options: ISearchOptions,
+  key: keyof ISearchOptions,
+  value: string
+) => {
   switch (key) {
     case "start":
       options[key] = Number(value);
@@ -73,6 +60,10 @@ export const setOption = (options: ISearchOptions, key: keyof ISearchOptions, va
       options[key] = FETCH_NUM_UNIT;
       break;
     case "range":
-      options[key] = toMatchRangeLabel(value)
+      options[key] = toMatchRangeLabel(value);
+      break;
+    case "genre":
+      options[key] = value;
+      break;
   }
-}
+};
