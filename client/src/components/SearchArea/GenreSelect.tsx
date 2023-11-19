@@ -25,7 +25,7 @@ const GenreSelect: React.FC = () => {
     }
     const index = Number(e.target.value);
     dispatch(
-      updateSearchOptions({ ...searchOptions, genre: genres[index].code })
+      updateSearchOptions({ ...searchOptions, genre: index === -1 ? undefined : genres[index].code })
     );
   };
 
