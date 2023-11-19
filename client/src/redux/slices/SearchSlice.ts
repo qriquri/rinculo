@@ -1,27 +1,24 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import ISearchOptions, { defaultOptions, toQueryParam } from "@/entities/SearchOptions";
-import IShopInfo from "@/entities/ShopInfo";
-
-interface ISearchResult {
-  totalNum: number
-  start: number
-  shops: IShopInfo[]
-}
+import ISearchOptions, {
+  defaultOptions,
+  toQueryParam,
+} from "@/entities/SearchOptions";
+import { IFetchedShopGenres, IGenre } from "@/entities/Genre";
+import { IFetchedShopInfo, ISearchShopResult } from "@/entities/SearchShopResult";
 
 interface ISearchState {
   searchOptions: ISearchOptions;
-  result?: ISearchResult;
+  result?: ISearchShopResult;
   isFetching: boolean;
-}
-
-interface IFetchedShopInfo {
-  options: ISearchOptions;
-  result: ISearchResult;
+  genres: IGenre[];
+  isFetchingGenres: boolean;
 }
 
 export const initialState: ISearchState = {
   searchOptions: defaultOptions(),
   isFetching: false,
+  genres: [],
+  isFetchingGenres: false
 };
 
 export const fetchShopInfo = createAsyncThunk(
@@ -30,10 +27,23 @@ export const fetchShopInfo = createAsyncThunk(
     const res = await fetch("/api/shopInfo?" + toQueryParam(payload), {
       method: "GET",
     });
-    const json = await res.json()
+    const json = await res.json();
     console.log(json);
 
     return { options: payload, result: json };
+  }
+);
+
+export const fetchShopGenre = createAsyncThunk(
+  "fetchShopGenre",
+  async (): Promise<IFetchedShopGenres> => {
+    const res = await fetch("/api/shopInfo?", {
+      method: "GET",
+    });
+    const json = await res.json();
+    console.log(json);
+
+    return json;
   }
 );
 
@@ -60,6 +70,21 @@ export const searchSlice = createSlice({
     builder.addCase(fetchShopInfo.rejected, (state, action) => {
       state.isFetching = false;
       alert("店情報の取得に失敗しました。");
+    });
+
+    builder.addCase(fetchShopGenre.pending, (state, action) => {
+      state.isFetchingGenres = true;
+    });
+    builder.addCase(
+      fetchShopGenre.fulfilled,
+      (state, action: PayloadAction<IFetchedShopGenres>) => {
+        state.isFetchingGenres = false;
+        state.genres = action.payload.genres;
+      }
+    );
+    builder.addCase(fetchShopGenre.rejected, (state, action) => {
+      state.isFetchingGenres = false;
+      alert("店ジャンルの取得に失敗しました。");
     });
   },
 });

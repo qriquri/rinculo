@@ -20,6 +20,7 @@ export default interface ISearchOptions {
   lng?: number;
   count?: number;
   start?: number;
+  genre?: string;
   format: DataFormat;
 }
 
@@ -30,6 +31,7 @@ export const defaultOptions = (): ISearchOptions => ({
   lng: undefined,
   count: FETCH_NUM_UNIT,
   start: undefined,
+  genre: undefined,
   format: "json",
 });
 
