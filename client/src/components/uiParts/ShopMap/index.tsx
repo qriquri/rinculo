@@ -1,5 +1,5 @@
 import { Box, SxProps, Theme } from "@mui/material";
-import LeafLetMap from "../LeafLetMap";
+import LeafLetMap from "../LeafletMap";
 import IShopInfo from "@/entities/ShopInfo";
 import styles from "./index.module.css";
 import { ReactNode } from "react";

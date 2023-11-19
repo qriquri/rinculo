@@ -1,6 +1,6 @@
 import { Box, List } from "@mui/material";
 import * as React from "react";
-import SectionHeader from "@/components/SectionHeader";
+import SectionHeader from "@/components/uiParts/SectionHeader";
 import styles from "./index.module.css";
 import CustomToolBar from "./ToolBar";
 import ShopListItem from "./ShopListItem";
