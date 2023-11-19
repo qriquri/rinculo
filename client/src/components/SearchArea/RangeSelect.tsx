@@ -1,8 +1,8 @@
 import { MenuItem, SelectChangeEvent } from "@mui/material";
-import { SearchRange, SearchRanges } from "@/entities/SearchOptions";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { updateSearchOptions } from "@/redux/slices/SearchSlice";
 import SelectForm from "./SelectForm";
+import { SearchRanges, SearchRange } from "@/entities/SearchRange";
 
 const RangeSelect: React.FC = () => {
   const searchOptions = useAppSelector((state) => state.search.searchOptions);

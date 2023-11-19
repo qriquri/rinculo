@@ -1,9 +1,7 @@
-import { SearchRanges } from "@/entities/SearchOptions";
 import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem,
   SelectChangeEvent,
 } from "@mui/material";
 import styles from "./Select.module.css";
