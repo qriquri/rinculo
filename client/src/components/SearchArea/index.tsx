@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import * as React from "react";
-import SectionHeader from "@/components/SectionHeader";
+import SectionHeader from "@/components/uiParts/SectionHeader";
 import styles from "./index.module.css";
 import { grey } from "@mui/material/colors";
 import RangeSelect from "./RangeSelect";

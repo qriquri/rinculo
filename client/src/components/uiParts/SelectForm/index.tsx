@@ -4,7 +4,7 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import styles from "./Select.module.css";
+import styles from "./index.module.css";
 import { ReactNode } from "react";
 
 interface IProps {

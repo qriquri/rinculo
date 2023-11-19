@@ -1,5 +1,5 @@
 import { MenuItem, SelectChangeEvent } from "@mui/material";
-import SelectForm from "./SelectForm";
+import SelectForm from "../uiParts/SelectForm";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   fetchShopGenre,

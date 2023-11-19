@@ -1,6 +1,6 @@
 "use client";
 import styles from "./page.module.css";
-import CustomAppBar from "@/components/AppBar";
+import CustomAppBar from "@/components/uiParts/AppBar";
 import SearchArea from "@/components/SearchArea";
 import SearchResultsArea from "@/components/SearchResultsArea";
 import { store } from "@/redux/store";
