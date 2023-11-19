@@ -47,6 +47,14 @@ const ShopDetail: React.FC<IProps> = (props) => {
         </Box>
       </Box>
       <Box className={styles.infoWrapper}>
+      <Box className={styles.subsection}>
+          <Typography fontWeight="bold" variant="caption">
+            アクセス
+          </Typography>
+          <Typography className={styles.subsectionText} variant="caption">
+            {props.shopInfo.access}
+          </Typography>
+        </Box>
         <Box className={styles.subsection}>
           <Typography fontWeight="bold" variant="caption">
             住所
