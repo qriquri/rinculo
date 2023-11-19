@@ -4,6 +4,7 @@ import * as React from "react";
 import styles from "./ShopDetail.module.css";
 import IShopInfo from "@/entities/ShopInfo";
 import ShopMap from "../ShopMap";
+import ShopMapPopup from "../ShopMap/ShopMapPopup";
 
 interface IProps {
   shopInfo: IShopInfo;

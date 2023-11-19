@@ -1,10 +1,11 @@
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { ReactNode } from "react";
 
 interface IProps{
   lat: number
   lng: number
   zoom?: number
+  popup?: ReactNode
 }
 
 const LeafLetMap: React.FC<IProps> = (props) => {
@@ -18,7 +19,7 @@ const LeafLetMap: React.FC<IProps> = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [props.lat, props.lng]
   );
-  return <Map lat={props.lat} lng={props.lng} zoom={props.zoom} />;
+  return <Map lat={props.lat} lng={props.lng} zoom={props.zoom} popup={props.popup} />;
 }
 
 export default LeafLetMap;

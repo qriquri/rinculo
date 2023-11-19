@@ -10,10 +10,11 @@ import "leaflet/dist/leaflet.css";
  * そのままだとIconが壊れているので下記のサイトを参考に対処する
  * https://github.com/PaulLeCam/react-leaflet/issues/808
  */
-import L from "leaflet";
+import L, { popup } from "leaflet";
 import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
+import { ReactNode } from "react";
 
 L.Icon.Default.mergeOptions({
   iconUrl: markerIcon.src,
@@ -26,6 +27,7 @@ interface IProps{
   lat: number
   lng: number
   zoom?: number 
+  popup?: ReactNode
 }
 
 const DEFAULT_MAP_ZOOM = 13
@@ -44,7 +46,7 @@ const Map: React.FC<IProps> = (props) => {
       />
       <Marker position={[props.lat, props.lng]}>
         <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
+          {props.popup}
         </Popup>
       </Marker>
     </MapContainer>
