@@ -10,10 +10,7 @@ interface IProps {
 
 const ShopDetail: React.FC<IProps> = (props) => {
   return (
-    <ListItem
-      className={styles.wrapper}
-      sx={{ bgcolor: "secondary.main" }}
-    >
+    <ListItem className={styles.wrapper} sx={{ bgcolor: "secondary.main" }}>
       <Box className={styles.topWrapper}>
         <Box className={styles.leftContainer}>
           <img
@@ -24,16 +21,19 @@ const ShopDetail: React.FC<IProps> = (props) => {
           />
         </Box>
         <Box className={styles.rightContainer}>
-          <Box>
-            <Typography variant="caption">{props.shopInfo.catch}</Typography>
-            <Typography
-              fontWeight="bold"
-              variant="h6"
-              sx={{ color: "primary.main" }}
-            >
-              {props.shopInfo.name}
-            </Typography>
-          </Box>
+          <Typography variant="caption" component="div" color="primary" fontWeight="bold">
+            {props.shopInfo.genre.name}
+          </Typography>
+          <Typography variant="caption" component="div">
+            {props.shopInfo.catch}
+          </Typography>
+          <Typography
+            fontWeight="bold"
+            variant="h6"
+            sx={{ color: "primary.main" }}
+          >
+            {props.shopInfo.name}
+          </Typography>
         </Box>
       </Box>
       <Box className={styles.infoWrapper}>

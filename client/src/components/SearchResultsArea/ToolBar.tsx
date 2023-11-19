@@ -2,10 +2,10 @@ import { Toolbar, Box, Typography, Button } from "@mui/material";
 import styles from "./ToolBar.module.css";
 import { useAppSelector } from "@/redux/hooks";
 import { FETCH_NUM_UNIT } from "@/entities/SearchOptions";
-import useFetchShopInfo from "../Hooks/UseFetchShopInfo";
+import useGoShopSearchResult from "../Hooks/UseGoShopSearchResult";
 
 const CustomToolBar: React.FC = () => {
-  const fetchShopInfo = useFetchShopInfo();
+  const goResult = useGoShopSearchResult();
   const searchState = useAppSelector((state) => state.search);
   const totalNum = searchState.result?.totalNum ?? 0;
   const startNum = searchState.result?.start ?? 0;
@@ -19,7 +19,7 @@ const CustomToolBar: React.FC = () => {
     if (isFirstPage) {
       return;
     }
-    fetchShopInfo({
+    goResult({
       ...searchState.searchOptions,
       start: startNum - FETCH_NUM_UNIT,
     });
@@ -29,7 +29,7 @@ const CustomToolBar: React.FC = () => {
     if (isFinalPage) {
       return;
     }
-    fetchShopInfo({
+    goResult({
       ...searchState.searchOptions,
       start: startNum + FETCH_NUM_UNIT,
     });
