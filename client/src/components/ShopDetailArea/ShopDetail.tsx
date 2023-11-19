@@ -49,10 +49,10 @@ const ShopDetail: React.FC<IProps> = (props) => {
       <Box className={styles.infoWrapper}>
         <Box className={styles.subsection}>
           <Typography fontWeight="bold" variant="caption">
-            アクセス
+            住所
           </Typography>
           <Typography className={styles.subsectionText} variant="caption">
-            {props.shopInfo.access}
+            {props.shopInfo.address}
           </Typography>
         </Box>
         <Box className={styles.subsection}>
