@@ -2,9 +2,8 @@
 import { Box, ListItem, Typography } from "@mui/material";
 import * as React from "react";
 import styles from "./ShopDetail.module.css";
-import IShopInfo from "@/entities/ShopInfo";
+import IShopInfo, { getCatchCopy } from "@/entities/ShopInfo";
 import ShopMap from "../uiParts/ShopMap";
-import ShopMapPopup from "../uiParts/ShopMap/ShopMapPopup";
 
 interface IProps {
   shopInfo: IShopInfo;
@@ -36,7 +35,7 @@ const ShopDetail: React.FC<IProps> = (props) => {
             {props.shopInfo.genre.name}
           </Typography>
           <Typography variant="caption" component="div">
-            {props.shopInfo.catch}
+            {getCatchCopy(props.shopInfo)}
           </Typography>
           <Typography
             fontWeight="bold"

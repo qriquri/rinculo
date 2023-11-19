@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import styles from "./ShopMapPopup.module.css";
-import IShopInfo from "@/entities/ShopInfo";
+import IShopInfo, { getCatchCopy } from "@/entities/ShopInfo";
 
 interface IProps {
   shopInfo: IShopInfo;
@@ -31,7 +31,7 @@ const ShopMapPopup: React.FC<IProps> = (props) => {
             >
               {props.shopInfo.genre.name}
             </Typography>
-            {` — ${props.shopInfo.catch}`}
+            {` — ${getCatchCopy(props.shopInfo)}`}
           </React.Fragment>
         }
       />
