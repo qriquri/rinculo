@@ -15,6 +15,7 @@ const GenreSelect: React.FC = () => {
   );
 
   const handleOpen = () => {
+    // NextJSはfetchの内容をキャッシュしてくれる
     dispatch(fetchShopGenre());
   };
 
