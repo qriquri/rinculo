@@ -3,10 +3,15 @@ import { Box, ListItem, Typography } from "@mui/material";
 import * as React from "react";
 import styles from "./ShopDetail.module.css";
 import IShopInfo from "@/entities/ShopInfo";
+import ShopMap from "../ShopMap";
 
 interface IProps {
   shopInfo: IShopInfo;
 }
+
+const DEFAULT_MAP_ZOOM = 17;
+const THUMBNAIL_WIDTH = 100;
+const THUMBNAIL_HEIGHT = 100;
 
 const ShopDetail: React.FC<IProps> = (props) => {
   return (
@@ -16,12 +21,17 @@ const ShopDetail: React.FC<IProps> = (props) => {
           <img
             src={props.shopInfo.photo.mobile.l}
             alt="shop-image"
-            width={100}
-            height={100}
+            width={THUMBNAIL_WIDTH}
+            height={THUMBNAIL_HEIGHT}
           />
         </Box>
         <Box className={styles.rightContainer}>
-          <Typography variant="caption" component="div" color="primary" fontWeight="bold">
+          <Typography
+            variant="caption"
+            component="div"
+            color="primary"
+            fontWeight="bold"
+          >
             {props.shopInfo.genre.name}
           </Typography>
           <Typography variant="caption" component="div">
@@ -51,6 +61,18 @@ const ShopDetail: React.FC<IProps> = (props) => {
           </Typography>
           <Typography className={styles.subsectionText} variant="caption">
             {props.shopInfo.open}
+          </Typography>
+        </Box>
+        <Box className={styles.subsection}>
+          <Typography fontWeight="bold" variant="caption">
+            周辺地図
+          </Typography>
+          <Typography className={styles.subsectionText} variant="caption">
+            <ShopMap
+              shopInfo={props.shopInfo}
+              sx={{ height: "20rem" }}
+              zoom={DEFAULT_MAP_ZOOM}
+            />
           </Typography>
         </Box>
       </Box>
