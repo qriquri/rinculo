@@ -6,5 +6,5 @@ export interface IGenre {
 export interface IFetchedShopGenres {
   totalNum: number;
   start: number;
-  genres: IGenre[];
+  genre: IGenre[];
 }

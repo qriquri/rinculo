@@ -76,5 +76,9 @@ export const setOption = (options: ISearchOptions, key: keyof ISearchOptions, va
       break;
     case "range":
       options[key] = toMatchRangeLabel(value)
+      break
+    case "genre":
+      options[key] = value
+      break
   }
 }

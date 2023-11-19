@@ -37,7 +37,7 @@ export const fetchShopInfo = createAsyncThunk(
 export const fetchShopGenre = createAsyncThunk(
   "fetchShopGenre",
   async (): Promise<IFetchedShopGenres> => {
-    const res = await fetch("/api/shopInfo?", {
+    const res = await fetch("/api/genre", {
       method: "GET",
     });
     const json = await res.json();
@@ -79,7 +79,7 @@ export const searchSlice = createSlice({
       fetchShopGenre.fulfilled,
       (state, action: PayloadAction<IFetchedShopGenres>) => {
         state.isFetchingGenres = false;
-        state.genres = action.payload.genres;
+        state.genres = action.payload.genre;
       }
     );
     builder.addCase(fetchShopGenre.rejected, (state, action) => {
