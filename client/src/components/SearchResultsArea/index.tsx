@@ -9,17 +9,17 @@ import { useSearchParams } from "next/navigation";
 import { objectKeys } from "@/utils/customObject";
 import { defaultOptions, setOption } from "@/entities/SearchOptions";
 import { fetchShopInfo } from "@/redux/slices/SearchSlice";
-import useFetchShopDetail from "../Hooks/UseFetchShopDetail";
+import useGoShopDetail from "../Hooks/UseGoShopDetail";
 
 const SearchResultsArea: React.FC = () => {
   const searchState = useAppSelector((state) => state.search);
 
   const params = useSearchParams();
-  const fetchDetail = useFetchShopDetail();
+  const goDetail = useGoShopDetail();
   const dispatch = useAppDispatch();
 
   const handleClickShopItem = (id: string) => {
-    fetchDetail(id);
+    goDetail(id);
   };
 
   const ShopListItems = React.useMemo(() => {
